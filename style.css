@@ -24,6 +24,8 @@ body {
 }
 
 body {
+  /* kills the double-tap-to-zoom gesture; pinch zoom still works */
+  touch-action: manipulation;
   font-family: "Fredoka", "Trebuchet MS", sans-serif;
   color: var(--ink);
   background: linear-gradient(135deg, #ffd3ec, #ffe9b8, #c8f5ee, #d7d2ff);
@@ -52,6 +54,8 @@ body {
 }
 
 .title {
+  -webkit-user-select: none;
+  user-select: none;
   font-size: 1.9rem;
   font-weight: 700;
   margin: 0 0 18px;
@@ -131,6 +135,10 @@ body {
 }
 
 .key {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
   font-family: inherit;
   font-size: 1.5rem;
   font-weight: 600;
