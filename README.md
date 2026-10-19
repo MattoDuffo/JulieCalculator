@@ -22,11 +22,27 @@ python3 -m http.server 8000
 
 ## Files
 
-| File         | What it does                     |
-| ------------ | -------------------------------- |
-| `index.html` | The page structure               |
-| `style.css`  | All the bright and fun styling   |
-| `script.js`  | Calculator logic and keypad glue |
+| File          | What it does                              |
+| ------------- | ----------------------------------------- |
+| `index.html`  | The page structure                        |
+| `style.css`   | All the bright and fun styling            |
+| `script.js`   | Calculator logic and keypad glue          |
+| `messages.js` | Puns, jokes and J-U-L-I-E acrostics       |
+| `effects.js`  | Sparkles, confetti, balloons, fireworks   |
+
+## Celebration levels
+
+The bigger the answer, the bigger the party:
+
+| Result        | What happens                      |
+| ------------- | --------------------------------- |
+| anything      | ✨ sparkles                        |
+| 10 and up     | 🎊 confetti sprinkles              |
+| 100 and up    | 🎈 flying balloons                 |
+| 1 000 and up  | 🎆 fireworks                       |
+| 10 000 and up | 🌈 all of it, plus a rainbow shake |
+
+Try `9 × 9` for a gentle one, then `999 × 999` for the full show.
 
 ## Git notes (for practice)
 
