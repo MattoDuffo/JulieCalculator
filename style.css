@@ -49,6 +49,7 @@ body {
 }
 
 .app {
+  position: relative;
   width: 100%;
   max-width: 380px;
   text-align: center;
@@ -77,6 +78,29 @@ body {
   50% {
     transform: rotate(12deg) scale(1.15);
   }
+}
+
+.mute {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 42px;
+  height: 42px;
+  font-size: 1.2rem;
+  line-height: 1;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 3px 0 rgba(124, 58, 237, 0.3);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.mute:active {
+  transform: translateY(2px);
+  box-shadow: none;
 }
 
 .calculator {

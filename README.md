@@ -29,6 +29,7 @@ python3 -m http.server 8000
 | `script.js`   | Calculator logic and keypad glue          |
 | `messages.js` | Puns, jokes and J-U-L-I-E acrostics       |
 | `effects.js`  | The 30 levels of celebration              |
+| `sound.js`    | The band, synthesised with Web Audio      |
 
 ## Celebration levels
 
@@ -69,6 +70,29 @@ calculator screen itself, under the result, in pink handwriting.
 | 28 | 28 | Supernova Shockwave |
 | 29 | 29 | Full Julie Takeover — the screen is hers |
 | 30 | 30 | **JULIE SINGULARITY** — everything, at once, spinning |
+
+### The band
+
+Every level has its own sound, built live with the Web Audio API — there are
+no audio files to download. It grows the same way the visuals do:
+
+| Level | What you hear |
+| ----- | ------------- |
+| 1–3 | a single triangle chime, then two, then three |
+| 4–7 | glockenspiel and marimba runs, a bass note, shakers |
+| 8–10 | the horns arrive: a brass stab, a chord, a short fanfare |
+| 11–13 | snare roll, kick and snare groove, hats |
+| **14** | **the trumpet solo** — a soloist out front, with vibrato |
+| 16–20 | walking bass, a sax answering the trumpet, horn stabs |
+| 21–25 | tom fills, timpani, and a key change up a whole tone |
+| 26–30 | octave fanfares, a riser, and a big band finale |
+
+It gets louder as well as busier: level 1 peaks around a quarter of full scale,
+level 30 just under it, with a limiter on the output so nothing ever clips.
+The 🔊 button at the top right mutes the lot, and it remembers your choice.
+
+Browsers only allow sound after a gesture, so the band wakes up on your first
+key press.
 
 ### Climbing the ladder
 

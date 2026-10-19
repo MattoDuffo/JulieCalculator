@@ -628,6 +628,7 @@ function celebrate(shown, messageHtml, forcedLevel) {
   stopEverything();
 
   lastMessage = messageHtml;
+  Sound.play(Math.max(1, Math.min(30, forcedLevel || countDigits(shown))));
   const digits = countDigits(shown);
   const level = Math.max(1, Math.min(30, forcedLevel || digits));
 

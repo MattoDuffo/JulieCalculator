@@ -60,7 +60,20 @@ function inputDigit(digit) {
   } else {
     current = current === "0" ? digit : current + digit;
   }
-  render();
+  const muteButton = document.getElementById("mute");
+
+function paintMuteButton() {
+  muteButton.textContent = Sound.isMuted() ? "🔇" : "🔊";
+  muteButton.setAttribute("aria-label", Sound.isMuted() ? "Unmute the band" : "Mute the band");
+}
+
+muteButton.addEventListener("click", () => {
+  Sound.toggleMute();
+  paintMuteButton();
+});
+
+paintMuteButton();
+render();
 }
 
 function inputDot() {
@@ -70,7 +83,20 @@ function inputDot() {
   } else if (!current.includes(".")) {
     current += ".";
   }
-  render();
+  const muteButton = document.getElementById("mute");
+
+function paintMuteButton() {
+  muteButton.textContent = Sound.isMuted() ? "🔇" : "🔊";
+  muteButton.setAttribute("aria-label", Sound.isMuted() ? "Unmute the band" : "Mute the band");
+}
+
+muteButton.addEventListener("click", () => {
+  Sound.toggleMute();
+  paintMuteButton();
+});
+
+paintMuteButton();
+render();
 }
 
 function chooseOperator(op) {
@@ -82,7 +108,20 @@ function chooseOperator(op) {
   }
   operator = op;
   waiting = true;
-  render();
+  const muteButton = document.getElementById("mute");
+
+function paintMuteButton() {
+  muteButton.textContent = Sound.isMuted() ? "🔇" : "🔊";
+  muteButton.setAttribute("aria-label", Sound.isMuted() ? "Unmute the band" : "Mute the band");
+}
+
+muteButton.addEventListener("click", () => {
+  Sound.toggleMute();
+  paintMuteButton();
+});
+
+paintMuteButton();
+render();
 }
 
 function equals() {
@@ -105,13 +144,39 @@ function clearAll() {
   operator = null;
   waiting = false;
   screenMessageEl.textContent = "";
-  render();
+  const muteButton = document.getElementById("mute");
+
+function paintMuteButton() {
+  muteButton.textContent = Sound.isMuted() ? "🔇" : "🔊";
+  muteButton.setAttribute("aria-label", Sound.isMuted() ? "Unmute the band" : "Mute the band");
+}
+
+muteButton.addEventListener("click", () => {
+  Sound.toggleMute();
+  paintMuteButton();
+});
+
+paintMuteButton();
+render();
 }
 
 function deleteLast() {
   if (waiting) return;
   current = current.length > 1 ? current.slice(0, -1) : "0";
-  render();
+  const muteButton = document.getElementById("mute");
+
+function paintMuteButton() {
+  muteButton.textContent = Sound.isMuted() ? "🔇" : "🔊";
+  muteButton.setAttribute("aria-label", Sound.isMuted() ? "Unmute the band" : "Mute the band");
+}
+
+muteButton.addEventListener("click", () => {
+  Sound.toggleMute();
+  paintMuteButton();
+});
+
+paintMuteButton();
+render();
 }
 
 function press(key) {
@@ -131,6 +196,7 @@ let lastPointerType = "";
 document.querySelectorAll(".key").forEach((key) => {
   key.addEventListener("pointerdown", (event) => {
     if (event.button !== 0) return;
+    Sound.unlock(); // browsers only allow audio after a gesture like this one
     const now = Date.now();
     // A touch is replayed as a synthetic mouse pointerdown moments later;
     // without this, one tap would count twice.
@@ -198,4 +264,17 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+const muteButton = document.getElementById("mute");
+
+function paintMuteButton() {
+  muteButton.textContent = Sound.isMuted() ? "🔇" : "🔊";
+  muteButton.setAttribute("aria-label", Sound.isMuted() ? "Unmute the band" : "Mute the band");
+}
+
+muteButton.addEventListener("click", () => {
+  Sound.toggleMute();
+  paintMuteButton();
+});
+
+paintMuteButton();
 render();
