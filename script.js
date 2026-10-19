@@ -82,6 +82,7 @@ function equals() {
   operator = null;
   waiting = true;
   resultEl.textContent = current;
+  messageEl.innerHTML = julieMessage(current, value);
 }
 
 function clearAll() {
