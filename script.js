@@ -12,9 +12,20 @@ let waiting = false; // true right after an operator is pressed
 function formatNumber(value) {
   if (!isFinite(value)) return "∞";
   if (Number.isNaN(value)) return "oops";
+  // Big results would print as "1e+30"; spell them out so every digit counts.
+  if (Math.abs(value) >= 1e15) {
+    return value.toLocaleString("fullwide", {
+      useGrouping: false,
+      maximumFractionDigits: 0,
+    });
+  }
   const rounded = Math.round(value * 1e10) / 1e10;
   return String(rounded);
 }
+
+// ?level=17 forces a celebration level, so you can tour the show without
+// having to multiply your way up to a 17-digit number.
+const previewLevel = Number(new URLSearchParams(location.search).get("level")) || 0;
 
 function render() {
   resultEl.textContent = current;
@@ -83,7 +94,7 @@ function equals() {
   waiting = true;
   resultEl.textContent = current;
   messageEl.innerHTML = julieMessage(current, value);
-  celebrate(value);
+  celebrate(current, messageEl.innerHTML, previewLevel);
 }
 
 function clearAll() {
