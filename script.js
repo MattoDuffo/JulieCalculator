@@ -114,14 +114,39 @@ function deleteLast() {
   render();
 }
 
+function press(key) {
+  if (key.dataset.digit !== undefined) return inputDigit(key.dataset.digit);
+  if (key.dataset.op !== undefined) return chooseOperator(key.dataset.op);
+  if (key.dataset.action === "dot") return inputDot();
+  if (key.dataset.action === "clear") return clearAll();
+  if (key.dataset.action === "delete") return deleteLast();
+  if (key.dataset.action === "equals") return equals();
+}
+
+// pointerdown rather than click: the key reacts on the way down, which lets
+// us cancel the tap that follows without losing the press.
+let lastPointerAt = 0;
+let lastPointerType = "";
+
 document.querySelectorAll(".key").forEach((key) => {
-  key.addEventListener("click", () => {
-    if (key.dataset.digit !== undefined) return inputDigit(key.dataset.digit);
-    if (key.dataset.op !== undefined) return chooseOperator(key.dataset.op);
-    if (key.dataset.action === "dot") return inputDot();
-    if (key.dataset.action === "clear") return clearAll();
-    if (key.dataset.action === "delete") return deleteLast();
-    if (key.dataset.action === "equals") return equals();
+  key.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0) return;
+    const now = Date.now();
+    // A touch is replayed as a synthetic mouse pointerdown moments later;
+    // without this, one tap would count twice.
+    const isReplay =
+      event.pointerType === "mouse" && lastPointerType === "touch" && now - lastPointerAt < 700;
+    lastPointerAt = now;
+    if (!isReplay) lastPointerType = event.pointerType;
+    if (isReplay) return;
+    event.preventDefault();
+    press(key);
+  });
+  // A keyboard-activated click (Enter or Space on a focused key) carries no
+  // pointer type and no click count; pointerdown never sees it. Taps and
+  // mouse clicks are already handled above, so they must not fall through.
+  key.addEventListener("click", (event) => {
+    if (event.detail === 0 && !event.pointerType) press(key);
   });
 });
 
@@ -131,6 +156,21 @@ function flash(selector) {
   key.classList.add("is-pressed");
   setTimeout(() => key.classList.remove("is-pressed"), 100);
 }
+
+// Safari ignores touch-action in places, so swallow the second tap of a
+// double tap outright. The press already registered on pointerdown.
+let lastTapAt = 0;
+document.addEventListener(
+  "touchend",
+  (event) => {
+    const now = Date.now();
+    if (now - lastTapAt <= 400) event.preventDefault();
+    lastTapAt = now;
+  },
+  { passive: false }
+);
+
+document.addEventListener("dblclick", (event) => event.preventDefault());
 
 document.addEventListener("keydown", (event) => {
   const k = event.key;
@@ -144,6 +184,8 @@ document.addEventListener("keydown", (event) => {
     chooseOperator(k);
     flash(`[data-op="${k}"]`);
   } else if (k === "Enter" || k === "=") {
+    // A focused key handles its own Enter.
+    if (document.activeElement && document.activeElement.classList.contains("key")) return;
     event.preventDefault();
     equals();
     flash('[data-action="equals"]');
