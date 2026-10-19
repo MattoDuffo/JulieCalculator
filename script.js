@@ -1,6 +1,5 @@
 const resultEl = document.getElementById("result");
 const expressionEl = document.getElementById("expression");
-const messageEl = document.getElementById("message");
 
 const SYMBOLS = { "+": "+", "-": "−", "*": "×", "/": "÷" };
 
@@ -93,8 +92,7 @@ function equals() {
   operator = null;
   waiting = true;
   resultEl.textContent = current;
-  messageEl.innerHTML = julieMessage(current, value);
-  celebrate(current, messageEl.innerHTML, previewLevel);
+  celebrate(current, julieMessage(current, value), previewLevel);
 }
 
 function clearAll() {
@@ -102,7 +100,6 @@ function clearAll() {
   accumulator = null;
   operator = null;
   waiting = false;
-  messageEl.textContent = "Fresh start! Julie believes in you. 💪";
   render();
 }
 

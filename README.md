@@ -35,7 +35,7 @@ python3 -m http.server 8000
 The level is the **number of digits in the result**. Every level from 1 up to
 yours fires in sequence, 90ms apart, so a big answer visibly builds instead of
 dumping everything at once. Julie's pun, joke or acrostic is always shown big
-on screen in a banner (and kept in the box under the keypad).
+on screen in a banner over the party.
 
 | Lvl | Digits | What happens |
 | --- | ------ | ------------ |

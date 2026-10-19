@@ -22,6 +22,7 @@ const MAX_PARTICLES = 1500;
 const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 let particles = [];
+let lastMessage = "";
 let running = false;
 let timers = [];
 let intervals = [];
@@ -593,7 +594,7 @@ const LEVELS = [
   {
     name: "Full Julie Takeover",
     run: (level) => {
-      takeover(document.getElementById("message").innerHTML);
+      takeover(lastMessage);
       confetti(150);
       balloons(18);
       repeat(() => firework(rand(0, W()), rand(0, H() * 0.7)), 320, 4000);
@@ -634,6 +635,7 @@ function countDigits(shown) {
 function celebrate(shown, messageHtml, forcedLevel) {
   stopEverything();
 
+  lastMessage = messageHtml;
   const digits = countDigits(shown);
   const level = Math.max(1, Math.min(30, forcedLevel || digits));
 

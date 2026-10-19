@@ -82,17 +82,20 @@ body {
 }
 
 .display {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   background: linear-gradient(160deg, #fff, #ffeaf6);
-  border-radius: 20px;
-  padding: 16px 18px;
-  margin-bottom: 16px;
+  border-radius: 22px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
   text-align: right;
   border: 3px solid var(--pink-hot);
-  min-height: 96px;
+  min-height: 210px;
 }
 
 .expression {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #a87ab8;
   min-height: 1.2em;
   overflow-wrap: anywhere;
@@ -100,7 +103,7 @@ body {
 
 .result {
   color: #5b21b6;
-  font-size: 2.6rem;
+  font-size: clamp(2.4rem, 11vw, 3.4rem);
   font-weight: 700;
   line-height: 1.1;
   overflow-wrap: anywhere;
@@ -172,18 +175,6 @@ body {
 
 .key--wide {
   grid-column: span 2;
-}
-
-.message {
-  margin: 20px auto 0;
-  min-height: 3.5em;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--purple);
-  background: rgba(255, 255, 255, 0.72);
-  border-radius: 20px;
-  padding: 14px 16px;
-  line-height: 1.45;
 }
 
 /* ---------- special effects ---------- */
@@ -446,6 +437,7 @@ body.strobe::after {
 }
 
 .takeover__text {
+  overflow-wrap: anywhere;
   font-size: clamp(1.6rem, 6vw, 3.4rem);
   font-weight: 700;
   text-align: center;
@@ -491,6 +483,7 @@ body.singularity .app {
 }
 
 .julie-banner__text {
+  overflow-wrap: anywhere;
   font-size: clamp(1.05rem, 4.4vw, 1.5rem);
   font-weight: 700;
   line-height: 1.4;
