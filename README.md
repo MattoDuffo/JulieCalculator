@@ -27,7 +27,7 @@ python3 -m http.server 8000
 | `index.html`  | The page structure                        |
 | `style.css`   | All the bright and fun styling            |
 | `script.js`   | Calculator logic and keypad glue          |
-| `messages.js` | Puns, jokes and J-U-L-I-E acrostics       |
+| `messages.js` | Puns, jokes, rhymes, cheers and acrostics |
 | `effects.js`  | The 30 levels of celebration              |
 | `sound.js`    | The band, synthesised with Web Audio      |
 
@@ -70,6 +70,23 @@ calculator screen itself, under the result, in pink handwriting.
 | 28 | 28 | Supernova Shockwave |
 | 29 | 29 | Full Julie Takeover — the screen is hers |
 | 30 | 30 | **JULIE SINGULARITY** — everything, at once, spinning |
+
+### What Julie says
+
+Six kinds of message take turns on the screen, 78 written lines in all plus
+32 768 possible acrostics:
+
+| Kind | How many | Example |
+| ---- | -------- | ------- |
+| Puns | 30 | "That's truly — sorry, Julie-ly — correct." |
+| Jokes | 24 | "What's Julie's favourite tree? A geome-tree. 🌳" |
+| Cheers | 10 | "Big number energy. Bigger Julie energy. 💪" |
+| Julie facts | 8 | "Certified Julie fact: her smile has no remainder. 😄" |
+| Rhymes | 6 | "Count the stars, count the sun: Julie outshines every one." |
+| Acrostics | 8⁵ | **J**oyful / **U**nstoppable / **L**uminous / … |
+
+The last 15 lines are remembered, so you will not get the same one twice in a
+row. Zero, negative results and dividing by zero each have their own reply.
 
 ### The band
 
