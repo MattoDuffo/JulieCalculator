@@ -4,6 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Julie's Calculator</title>
+    <meta
+      name="description"
+      content="A bright little calculator that celebrates every answer: 30 levels of confetti, fireworks and a big band, plus a joke about Julie every time."
+    />
+
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#7c3aed" />
+    <link rel="icon" href="icon-192.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Julie" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Julie's Calculator" />
+    <meta
+      property="og:description"
+      content="Every answer gets a celebration — and a joke about Julie. The bigger the number, the bigger the party."
+    />
+    <meta property="og:url" content="https://mattoduffo.github.io/JulieCalculator/" />
+    <meta property="og:image" content="https://mattoduffo.github.io/JulieCalculator/preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,7 +41,10 @@
     <main class="app">
       <h1 class="title">Julie's Calculator <span class="sparkle">✨</span></h1>
 
-      <button class="mute" id="mute" type="button" aria-label="Mute the band">🔊</button>
+      <div class="tools">
+        <button class="tool" id="share" type="button" aria-label="Share Julie's Calculator">🔗</button>
+        <button class="tool" id="mute" type="button" aria-label="Mute the band">🔊</button>
+      </div>
 
       <section class="calculator">
         <div class="display">

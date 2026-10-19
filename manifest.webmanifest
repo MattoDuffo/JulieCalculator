@@ -1,0 +1,17 @@
+{
+  "name": "Julie's Calculator",
+  "short_name": "Julie",
+  "description": "A bright little calculator that celebrates every answer — 30 levels of confetti, fireworks and a big band, plus a joke about Julie every time.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffd3ec",
+  "theme_color": "#7c3aed",
+  "categories": ["utilities", "entertainment"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

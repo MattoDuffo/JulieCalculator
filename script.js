@@ -60,7 +60,45 @@ function inputDigit(digit) {
   } else {
     current = current === "0" ? digit : current + digit;
   }
-  const muteButton = document.getElementById("mute");
+  // Offline support, and the home-screen app that comes with it.
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(() => {
+      /* offline support is a bonus, never a requirement */
+    });
+  });
+}
+
+function toast(text) {
+  const note = document.createElement("div");
+  note.className = "toast";
+  note.textContent = text;
+  document.body.appendChild(note);
+  setTimeout(() => note.remove(), 2600);
+}
+
+const shareButton = document.getElementById("share");
+
+shareButton.addEventListener("click", async () => {
+  const share = {
+    title: "Julie's Calculator",
+    text: "Every answer gets a celebration — and a joke about Julie.",
+    url: location.href.split("?")[0].replace(/index\.html$/, ""),
+  };
+  try {
+    if (navigator.share) {
+      await navigator.share(share);
+      return;
+    }
+    await navigator.clipboard.writeText(share.url);
+    toast("Link copied! 💕");
+  } catch (err) {
+    // The person closed the share sheet, or the browser said no: never mind.
+    if (err && err.name !== "AbortError") toast(share.url);
+  }
+});
+
+const muteButton = document.getElementById("mute");
 
 function paintMuteButton() {
   muteButton.textContent = Sound.isMuted() ? "🔇" : "🔊";
@@ -83,7 +121,45 @@ function inputDot() {
   } else if (!current.includes(".")) {
     current += ".";
   }
-  const muteButton = document.getElementById("mute");
+  // Offline support, and the home-screen app that comes with it.
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(() => {
+      /* offline support is a bonus, never a requirement */
+    });
+  });
+}
+
+function toast(text) {
+  const note = document.createElement("div");
+  note.className = "toast";
+  note.textContent = text;
+  document.body.appendChild(note);
+  setTimeout(() => note.remove(), 2600);
+}
+
+const shareButton = document.getElementById("share");
+
+shareButton.addEventListener("click", async () => {
+  const share = {
+    title: "Julie's Calculator",
+    text: "Every answer gets a celebration — and a joke about Julie.",
+    url: location.href.split("?")[0].replace(/index\.html$/, ""),
+  };
+  try {
+    if (navigator.share) {
+      await navigator.share(share);
+      return;
+    }
+    await navigator.clipboard.writeText(share.url);
+    toast("Link copied! 💕");
+  } catch (err) {
+    // The person closed the share sheet, or the browser said no: never mind.
+    if (err && err.name !== "AbortError") toast(share.url);
+  }
+});
+
+const muteButton = document.getElementById("mute");
 
 function paintMuteButton() {
   muteButton.textContent = Sound.isMuted() ? "🔇" : "🔊";
@@ -108,7 +184,45 @@ function chooseOperator(op) {
   }
   operator = op;
   waiting = true;
-  const muteButton = document.getElementById("mute");
+  // Offline support, and the home-screen app that comes with it.
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(() => {
+      /* offline support is a bonus, never a requirement */
+    });
+  });
+}
+
+function toast(text) {
+  const note = document.createElement("div");
+  note.className = "toast";
+  note.textContent = text;
+  document.body.appendChild(note);
+  setTimeout(() => note.remove(), 2600);
+}
+
+const shareButton = document.getElementById("share");
+
+shareButton.addEventListener("click", async () => {
+  const share = {
+    title: "Julie's Calculator",
+    text: "Every answer gets a celebration — and a joke about Julie.",
+    url: location.href.split("?")[0].replace(/index\.html$/, ""),
+  };
+  try {
+    if (navigator.share) {
+      await navigator.share(share);
+      return;
+    }
+    await navigator.clipboard.writeText(share.url);
+    toast("Link copied! 💕");
+  } catch (err) {
+    // The person closed the share sheet, or the browser said no: never mind.
+    if (err && err.name !== "AbortError") toast(share.url);
+  }
+});
+
+const muteButton = document.getElementById("mute");
 
 function paintMuteButton() {
   muteButton.textContent = Sound.isMuted() ? "🔇" : "🔊";
@@ -144,7 +258,45 @@ function clearAll() {
   operator = null;
   waiting = false;
   screenMessageEl.textContent = "";
-  const muteButton = document.getElementById("mute");
+  // Offline support, and the home-screen app that comes with it.
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(() => {
+      /* offline support is a bonus, never a requirement */
+    });
+  });
+}
+
+function toast(text) {
+  const note = document.createElement("div");
+  note.className = "toast";
+  note.textContent = text;
+  document.body.appendChild(note);
+  setTimeout(() => note.remove(), 2600);
+}
+
+const shareButton = document.getElementById("share");
+
+shareButton.addEventListener("click", async () => {
+  const share = {
+    title: "Julie's Calculator",
+    text: "Every answer gets a celebration — and a joke about Julie.",
+    url: location.href.split("?")[0].replace(/index\.html$/, ""),
+  };
+  try {
+    if (navigator.share) {
+      await navigator.share(share);
+      return;
+    }
+    await navigator.clipboard.writeText(share.url);
+    toast("Link copied! 💕");
+  } catch (err) {
+    // The person closed the share sheet, or the browser said no: never mind.
+    if (err && err.name !== "AbortError") toast(share.url);
+  }
+});
+
+const muteButton = document.getElementById("mute");
 
 function paintMuteButton() {
   muteButton.textContent = Sound.isMuted() ? "🔇" : "🔊";
@@ -163,7 +315,45 @@ render();
 function deleteLast() {
   if (waiting) return;
   current = current.length > 1 ? current.slice(0, -1) : "0";
-  const muteButton = document.getElementById("mute");
+  // Offline support, and the home-screen app that comes with it.
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(() => {
+      /* offline support is a bonus, never a requirement */
+    });
+  });
+}
+
+function toast(text) {
+  const note = document.createElement("div");
+  note.className = "toast";
+  note.textContent = text;
+  document.body.appendChild(note);
+  setTimeout(() => note.remove(), 2600);
+}
+
+const shareButton = document.getElementById("share");
+
+shareButton.addEventListener("click", async () => {
+  const share = {
+    title: "Julie's Calculator",
+    text: "Every answer gets a celebration — and a joke about Julie.",
+    url: location.href.split("?")[0].replace(/index\.html$/, ""),
+  };
+  try {
+    if (navigator.share) {
+      await navigator.share(share);
+      return;
+    }
+    await navigator.clipboard.writeText(share.url);
+    toast("Link copied! 💕");
+  } catch (err) {
+    // The person closed the share sheet, or the browser said no: never mind.
+    if (err && err.name !== "AbortError") toast(share.url);
+  }
+});
+
+const muteButton = document.getElementById("mute");
 
 function paintMuteButton() {
   muteButton.textContent = Sound.isMuted() ? "🔇" : "🔊";
@@ -261,6 +451,44 @@ document.addEventListener("keydown", (event) => {
   } else if (k === "Escape") {
     clearAll();
     flash('[data-action="clear"]');
+  }
+});
+
+// Offline support, and the home-screen app that comes with it.
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(() => {
+      /* offline support is a bonus, never a requirement */
+    });
+  });
+}
+
+function toast(text) {
+  const note = document.createElement("div");
+  note.className = "toast";
+  note.textContent = text;
+  document.body.appendChild(note);
+  setTimeout(() => note.remove(), 2600);
+}
+
+const shareButton = document.getElementById("share");
+
+shareButton.addEventListener("click", async () => {
+  const share = {
+    title: "Julie's Calculator",
+    text: "Every answer gets a celebration — and a joke about Julie.",
+    url: location.href.split("?")[0].replace(/index\.html$/, ""),
+  };
+  try {
+    if (navigator.share) {
+      await navigator.share(share);
+      return;
+    }
+    await navigator.clipboard.writeText(share.url);
+    toast("Link copied! 💕");
+  } catch (err) {
+    // The person closed the share sheet, or the browser said no: never mind.
+    if (err && err.name !== "AbortError") toast(share.url);
   }
 });
 

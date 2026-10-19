@@ -4,6 +4,18 @@ A bright, silly little calculator that lives in the browser. It does the four
 basic operations — and every time you hit `=` it also says something nice about
 Julie.
 
+## Install it
+
+It is a progressive web app, so it can live on a phone's home screen and work
+with no signal at all.
+
+- **iPhone / iPad:** open the link in Safari → Share → **Add to Home Screen**
+- **Android:** open in Chrome → ⋮ → **Install app** (or **Add to Home screen**)
+- **Desktop Chrome / Edge:** the install icon in the address bar
+
+Once installed it opens full screen with its own icon, and the 🔗 button in the
+app shares the link.
+
 ## Run it
 
 No build step, no dependencies. Just open the file:
@@ -30,6 +42,10 @@ python3 -m http.server 8000
 | `messages.js` | Puns, jokes, rhymes, cheers and acrostics |
 | `effects.js`  | The 30 levels of celebration              |
 | `sound.js`    | The band, synthesised with Web Audio      |
+| `sw.js`       | Service worker: offline support           |
+| `manifest.webmanifest` | Home-screen app details          |
+| `icon.svg`    | Source art for the app icons              |
+| `preview.png` | The card shown when the link is shared    |
 
 ## Celebration levels
 
