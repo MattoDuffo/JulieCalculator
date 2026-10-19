@@ -84,14 +84,14 @@ body {
 .display {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   background: linear-gradient(160deg, #fff, #ffeaf6);
   border-radius: 22px;
   padding: 18px 20px;
   margin-bottom: 18px;
   text-align: right;
   border: 3px solid var(--pink-hot);
-  min-height: 210px;
+  min-height: 240px;
 }
 
 .expression {
@@ -107,6 +107,21 @@ body {
   font-weight: 700;
   line-height: 1.1;
   overflow-wrap: anywhere;
+}
+
+.screen-message {
+  margin-top: 10px;
+  font-family: "Caveat", "Segoe Script", cursive;
+  font-size: clamp(1.25rem, 5.4vw, 1.7rem);
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: left;
+  color: var(--pink-hot);
+  overflow-wrap: anywhere;
+}
+
+.screen-message b {
+  color: var(--magenta);
 }
 
 .keypad {
@@ -466,63 +481,6 @@ body.singularity .app {
   100% { transform: rotate(720deg) scale(1); }
 }
 
-/* Julie's words, on screen, over everything */
-.julie-banner {
-  position: absolute;
-  bottom: 11vh;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(92vw, 640px);
-  padding: 18px 22px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.94);
-  border: 4px solid var(--pink);
-  box-shadow: 0 14px 40px rgba(59, 42, 74, 0.28);
-  animation: banner-pop 0.5s cubic-bezier(0.2, 1.6, 0.4, 1);
-  z-index: 70;
-}
-
-.julie-banner__text {
-  overflow-wrap: anywhere;
-  font-size: clamp(1.05rem, 4.4vw, 1.5rem);
-  font-weight: 700;
-  line-height: 1.4;
-  text-align: center;
-  color: var(--magenta);
-}
-
-.julie-banner--giant {
-  width: min(94vw, 780px);
-  border-width: 6px;
-}
-
-.julie-banner--giant .julie-banner__text {
-  font-size: clamp(1.3rem, 6vw, 2.2rem);
-}
-
-.julie-banner--wild {
-  animation: banner-pop 0.5s cubic-bezier(0.2, 1.6, 0.4, 1), banner-wobble 0.8s ease-in-out infinite 0.5s;
-  border-color: var(--purple);
-}
-
-.julie-banner.is-leaving {
-  animation: banner-out 0.7s ease forwards;
-}
-
-@keyframes banner-pop {
-  from { opacity: 0; transform: translateX(-50%) translateY(40px) scale(0.7); }
-  to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
-}
-
-@keyframes banner-wobble {
-  0%, 100% { transform: translateX(-50%) rotate(-1.5deg) scale(1); }
-  50% { transform: translateX(-50%) rotate(1.5deg) scale(1.04); }
-}
-
-@keyframes banner-out {
-  to { opacity: 0; transform: translateX(-50%) translateY(30px) scale(0.9); }
-}
-
 /* level readout */
 .level-badge {
   position: absolute;
@@ -537,7 +495,7 @@ body.singularity .app {
   font-size: clamp(0.8rem, 3.4vw, 1.05rem);
   font-weight: 600;
   letter-spacing: 0.04em;
-  animation: banner-pop 0.4s ease, fade-out-late 4.2s forwards;
+  animation: badge-pop 0.4s ease, fade-out-late 4.2s forwards;
   z-index: 70;
 }
 
@@ -554,6 +512,11 @@ body.singularity .app {
   background: linear-gradient(90deg, var(--magenta), var(--purple));
 }
 
+@keyframes badge-pop {
+  from { opacity: 0; transform: translateX(-50%) translateY(-20px) scale(0.8); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+
 @keyframes fade-out-late {
   0%, 80% { opacity: 1; }
   100% { opacity: 0; }
@@ -564,7 +527,6 @@ body.singularity .app {
   body.rainbow,
   body.quake,
   .sparkle,
-  .julie-banner,
   .level-badge {
     animation: none;
   }

@@ -1,5 +1,6 @@
 const resultEl = document.getElementById("result");
 const expressionEl = document.getElementById("expression");
+const screenMessageEl = document.getElementById("screen-message");
 
 const SYMBOLS = { "+": "+", "-": "−", "*": "×", "/": "÷" };
 
@@ -55,6 +56,7 @@ function inputDigit(digit) {
   if (waiting) {
     current = digit;
     waiting = false;
+    screenMessageEl.textContent = "";
   } else {
     current = current === "0" ? digit : current + digit;
   }
@@ -92,7 +94,9 @@ function equals() {
   operator = null;
   waiting = true;
   resultEl.textContent = current;
-  celebrate(current, julieMessage(current, value), previewLevel);
+  const message = julieMessage(current, value);
+  screenMessageEl.innerHTML = message;
+  celebrate(current, message, previewLevel);
 }
 
 function clearAll() {
@@ -100,6 +104,7 @@ function clearAll() {
   accumulator = null;
   operator = null;
   waiting = false;
+  screenMessageEl.textContent = "";
   render();
 }
 

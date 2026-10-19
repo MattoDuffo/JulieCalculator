@@ -34,8 +34,8 @@ python3 -m http.server 8000
 
 The level is the **number of digits in the result**. Every level from 1 up to
 yours fires in sequence, 90ms apart, so a big answer visibly builds instead of
-dumping everything at once. Julie's pun, joke or acrostic is always shown big
-on screen in a banner over the party.
+dumping everything at once. Julie's pun, joke or acrostic is printed on the
+calculator screen itself, under the result, in pink handwriting.
 
 | Lvl | Digits | What happens |
 | --- | ------ | ------------ |
@@ -48,7 +48,7 @@ on screen in a banner over the party.
 | 7 | 7 | Streamer Storm |
 | 8 | 8 | First Firework 🎆 |
 | 9 | 9 | Firework Volley |
-| 10 | 10 | Giant Julie Banner + screen flash |
+| 10 | 10 | Screen Flash |
 | 11 | 11 | Star Burst shockwave |
 | 12 | 12 | Confetti Cannons from both corners |
 | 13 | 13 | Rainbow Sky — the whole page hue-shifts |

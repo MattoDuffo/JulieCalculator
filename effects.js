@@ -518,14 +518,6 @@ function takeover(messageHtml) {
   later(() => curtain.remove(), 5000);
 }
 
-function showBanner(html, level) {
-  const banner = node("julie-banner", `<div class="julie-banner__text">${html}</div>`);
-  if (level >= 10) banner.classList.add("julie-banner--giant");
-  if (level >= 20) banner.classList.add("julie-banner--wild");
-  later(() => banner.classList.add("is-leaving"), 4200 + level * 60);
-  later(() => banner.remove(), 5000 + level * 60);
-}
-
 function showBadge(level, digits, forced) {
   const name = LEVELS[level - 1].name;
   const tail = forced
@@ -558,7 +550,7 @@ const LEVELS = [
   { name: "Streamer Storm", run: () => streamers(26) },
   { name: "First Firework", run: () => firework(W() / 2, H() * 0.3) },
   { name: "Firework Volley", run: () => fireworkVolley(4) },
-  { name: "Giant Julie Banner", run: () => flashScreen("rgba(255,255,255,0.55)", 420) },
+  { name: "Screen Flash", run: () => flashScreen("rgba(255,255,255,0.55)", 420) },
   { name: "Star Burst", run: () => (shockwave(W() / 2, H() * 0.35, 3), sparkles(30, 2)) },
   { name: "Confetti Cannons", run: () => (confettiCannon(true), confettiCannon(false)) },
   { name: "Rainbow Sky", run: () => bodyClass("rainbow", 5000) },
@@ -639,7 +631,6 @@ function celebrate(shown, messageHtml, forcedLevel) {
   const digits = countDigits(shown);
   const level = Math.max(1, Math.min(30, forcedLevel || digits));
 
-  showBanner(messageHtml, level);
   if (calm) return;
 
   showBadge(level, digits, Boolean(forcedLevel));
