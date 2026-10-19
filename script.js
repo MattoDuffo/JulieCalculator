@@ -83,6 +83,7 @@ function equals() {
   waiting = true;
   resultEl.textContent = current;
   messageEl.innerHTML = julieMessage(current, value);
+  celebrate(value);
 }
 
 function clearAll() {

@@ -180,3 +180,86 @@ body {
   padding: 14px 16px;
   line-height: 1.45;
 }
+
+/* ---------- special effects ---------- */
+
+#fx {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+}
+
+#balloons {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 40;
+}
+
+.balloon-sway {
+  position: absolute;
+  bottom: -140px;
+  animation: sway 2.6s ease-in-out infinite alternate;
+}
+
+.balloon {
+  width: 46px;
+  height: 58px;
+  border-radius: 50% 50% 48% 48%;
+  box-shadow: inset -8px -8px 0 rgba(0, 0, 0, 0.08);
+  animation: rise 6s linear forwards;
+}
+
+.balloon::after {
+  content: "";
+  display: block;
+  width: 2px;
+  height: 60px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(-120vh);
+  }
+}
+
+@keyframes sway {
+  from {
+    margin-left: -18px;
+  }
+  to {
+    margin-left: 18px;
+  }
+}
+
+body.mega .app {
+  animation: party 0.45s ease-in-out 3;
+}
+
+@keyframes party {
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    transform: translateX(-8px) rotate(-2deg);
+    filter: hue-rotate(60deg);
+  }
+  75% {
+    transform: translateX(8px) rotate(2deg);
+    filter: hue-rotate(-60deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  .sparkle,
+  body.mega .app {
+    animation: none;
+  }
+}
